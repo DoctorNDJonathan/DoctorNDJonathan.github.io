@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nikhil D Jonathan — Climate Risk · AI · Finance</title>
+  <meta name="description" content="Nikhil D Jonathan — researcher and educator working at the intersection of climate risk, AI, and finance.">
+
+  <!-- Fonts (loaded from Google Fonts CDN) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<!-- data-page tells the engine which nav link to highlight -->
+<body data-page="home">
+
+  <!-- Navigation is injected here by site.js -->
+  <header id="site-header"></header>
+
+  <!-- ============ HERO (text + photo filled by site.js) ============ -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div>
+        <p class="hero__role reveal" id="hero-role"></p>
+        <h1 class="reveal" id="hero-name"></h1>
+        <p class="hero__tagline reveal" id="hero-tagline"></p>
+        <p class="hero__bio reveal" id="hero-bio"></p>
+        <!-- The three buttons are built from config.js → ctas -->
+        <div class="btn-row reveal" id="hero-ctas"></div>
+      </div>
+      <div class="hero__photo">
+        <img id="hero-photo-img" src="" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOCUS AREAS (filled from config.js) ============== -->
+  <section>
+    <div class="container">
+      <p class="eyebrow">Focus areas</p>
+      <ul class="focus" id="focus-areas"></ul>
+    </div>
+  </section>
+
+  <!-- ============ WHAT I DO  (EDIT this prose freely) ============== -->
+  <section>
+    <div class="container">
+      <div class="rule"></div>
+      <div class="pillars">
+
+        <article class="card">
+          <h3 class="card__title">Research</h3>
+          <p>Publications, working papers, and an open-access compendium on
+             climate risk, ESG finance, and applied analytics.</p>
+          <a class="card__link" href="research.html">Explore research</a>
+        </article>
+
+        <article class="card">
+          <h3 class="card__title">Teaching &amp; Training</h3>
+          <p>University courses plus management development programmes and
+             corporate training in AI, analytics, and decision models.</p>
+          <a class="card__link" href="teaching.html">See teaching</a>
+        </article>
+
+        <article class="card">
+          <h3 class="card__title">Products</h3>
+          <p>Open resources, tools, and consulting engagements you can use,
+             download, or commission.</p>
+          <a class="card__link" href="products.html">Browse products</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer is injected here by site.js -->
+  <footer id="site-footer"></footer>
+
+  <!-- Load order matters: config + data first, engine last -->
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>

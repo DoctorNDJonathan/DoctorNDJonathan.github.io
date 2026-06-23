@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research — Nikhil D Jonathan</title>
+  <meta name="description" content="Publications, working papers, and open-access research by Nikhil D Jonathan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-page="research">
+  <header id="site-header"></header>
+
+  <!-- ============ PAGE INTRO  (EDIT this prose) =================== -->
+  <section>
+    <div class="container">
+      <p class="eyebrow reveal">Research</p>
+      <h1 class="reveal">Research &amp; publications</h1>
+      <p class="lead reveal">
+        Work at the intersection of climate risk, artificial intelligence, and
+        finance — from peer-reviewed publications to applied working papers.
+      </p>
+      <!-- This button links to your Google Scholar (set in config.js) -->
+      <div class="btn-row reveal">
+        <a class="btn btn--primary" id="scholar-btn" target="_blank" rel="noopener">View on Google Scholar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SELECTED PUBLICATIONS  (from data.js) =========== -->
+  <section>
+    <div class="container">
+      <h2>Selected publications</h2>
+      <div class="rule"></div>
+      <div class="grid" id="publications-list"></div>
+    </div>
+  </section>
+
+  <!-- ============ WORKING PAPERS  (from data.js) ================== -->
+  <section>
+    <div class="container">
+      <h2>Working papers</h2>
+      <div class="rule"></div>
+      <div class="grid" id="workingpapers-list"></div>
+    </div>
+  </section>
+
+  <!-- ============ EMBEDDED SLIDE DECK / TALK  (EDIT) =============
+       Paste an embed URL below to show a Google Slides deck, SlideShare,
+       or YouTube talk. To hide this section, delete the whole <section>.
+       Google Slides: File → Share → Publish to web → Embed → copy the URL.
+  -->
+  <section>
+    <div class="container">
+      <h2>Featured deck</h2>
+      <div class="rule"></div>
+      <div class="embed">
+        <iframe
+          src="https://docs.google.com/presentation/d/e/PASTE_YOUR_EMBED_ID/embed"
+          allowfullscreen title="Featured slide deck"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer id="site-footer"></footer>
+
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="site.js"></script>
+  <!-- tiny inline script: point the Scholar button at the link in config.js -->
+  <script>
+    (function () {
+      var L = (window.SITE_CONFIG || {}).links || {};
+      var btn = document.getElementById("scholar-btn");
+      if (btn && L.scholar) { btn.href = L.scholar; } else if (btn) { btn.style.display = "none"; }
+    })();
+  </script>
+</body>
+</html>

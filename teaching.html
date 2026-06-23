@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teaching &amp; Training — Nikhil D Jonathan</title>
+  <meta name="description" content="University courses, management development programmes, and corporate training by Nikhil D Jonathan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-page="teaching">
+  <header id="site-header"></header>
+
+  <!-- ============ PAGE INTRO  (EDIT this prose) =================== -->
+  <section>
+    <div class="container">
+      <p class="eyebrow reveal">Teaching &amp; Training</p>
+      <h1 class="reveal">Courses, MDPs &amp; corporate training</h1>
+      <p class="lead reveal">
+        Graduate teaching plus hands-on management development programmes and
+        corporate training in AI, analytics, and decision-making.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ COURSES  (from data.js) ======================== -->
+  <section>
+    <div class="container">
+      <h2>Courses</h2>
+      <div class="rule"></div>
+      <div class="grid" id="courses-list"></div>
+    </div>
+  </section>
+
+  <!-- ============ TRAINING / MDPs  (from data.js) ================ -->
+  <section>
+    <div class="container">
+      <h2>Training &amp; development programmes</h2>
+      <div class="rule"></div>
+      <div class="grid" id="training-list"></div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS  (from data.js) =================== -->
+  <section>
+    <div class="container">
+      <h2>What participants say</h2>
+      <div class="rule"></div>
+      <div id="testimonials-list"></div>
+    </div>
+  </section>
+
+  <!-- ============ WORK-WITH-ME FUNNEL  (EDIT) ====================
+       This is your lead-generation block. Keep the call to action clear. -->
+  <section>
+    <div class="container">
+      <article class="card card--feature">
+        <h3 class="card__title">Book a workshop or training</h3>
+        <p>Available for guest lectures, faculty development programmes, and
+           bespoke corporate training in analytics, AI, and climate-risk finance.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" id="contact-btn">Get in touch</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer id="site-footer"></footer>
+
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="site.js"></script>
+  <!-- point the contact button at your email from config.js -->
+  <script>
+    (function () {
+      var L = (window.SITE_CONFIG || {}).links || {};
+      var btn = document.getElementById("contact-btn");
+      if (btn && L.email) { btn.href = "mailto:" + L.email; }
+    })();
+  </script>
+</body>
+</html>
