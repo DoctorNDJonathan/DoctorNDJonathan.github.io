@@ -21,7 +21,7 @@ window.SITE_CONFIG = {
   /* --- Profile photo ------------------------------------------------
      Drop your photo into  assets/img/  and put its filename here.
      A placeholder is provided until you do.                            */
-  photo: "assets/img/profile.jpeg",   // e.g. "assets/img/profile.jpg"
+  photo: "profile.jpeg",   // e.g. "assets/img/profile.jpg"
 
   /* --- All your links live here -------------------------------------
      Used by the nav, footer, hero buttons, and Research page.
