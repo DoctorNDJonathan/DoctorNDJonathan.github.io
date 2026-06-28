@@ -20,7 +20,7 @@
     { page: "home",     label: "Home",     href: "index.html"    },
     { page: "research", label: "Research", href: "research.html" },
     { page: "teaching", label: "Teaching & Training", href: "teaching.html" },
-    { page: "products", label: "Products", href: "products.html" }
+    { page: "products", label: "AI Products", href: "products.html" }
   ];
 
   /* small helper: get element by id (returns null if absent) */
