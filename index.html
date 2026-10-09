@@ -17,7 +17,48 @@ body{margin:0;background:#F4F1E8}
 a{color:#276B5E}a:hover{color:#10302D}
 h1,h2,h3,p,ul,ol{margin:0}
 </style>
-<style>html{scroll-behavior:smooth}</style>
+<style>
+html{scroll-behavior:smooth}
+[hidden]{display:none!important}
+.course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.course-card{background:#FBFAF5;border:1px solid #D9D4C3;border-top:6px solid #2F7F6F;border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.course-card h3{font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;line-height:1.2;color:#10302D}
+.course-card p{font-size:15.5px;line-height:1.5;color:#3A4A47;flex:1}
+.course-tags{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.course-badge{font-size:11px;font-weight:700;letter-spacing:2px;color:#10302D;background:#E9A04B;border-radius:6px;padding:4px 8px;text-transform:uppercase}
+.course-label{font-size:12px;font-weight:600;letter-spacing:1.5px;color:#5E6E6A;text-transform:uppercase}
+.course-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:10px;background:#10302D;color:#F4F1E8;font:600 15px 'IBM Plex Sans',Arial,sans-serif;cursor:pointer}
+.course-btn:hover{background:#276B5E}
+.course-btn:focus-visible,.mat-dialog button:focus-visible,.mat-dialog input:focus-visible,.mat-year summary:focus-visible{outline:3px solid #D9822B;outline-offset:2px}
+.mat-dialog{width:min(640px,calc(100vw - 32px));max-height:min(80vh,760px);border:0;border-radius:18px;padding:0;background:#F4F1E8;color:#1E2B29;font-family:'IBM Plex Sans',Arial,sans-serif;box-shadow:0 24px 60px rgba(16,48,45,.35)}
+.mat-dialog::backdrop{background:rgba(11,34,32,.6)}
+.mat-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;background:#10302D;padding:22px 24px}
+.mat-head p{font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#E9A04B;margin:0 0 6px}
+.mat-head h2{font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:500;line-height:1.15;color:#F4F1E8;margin:0}
+.mat-close{flex:0 0 44px;height:44px;border:1px solid #2F7F6F;border-radius:10px;background:transparent;color:#F4F1E8;font-size:22px;cursor:pointer}
+.mat-body{padding:24px;overflow:auto}
+.mat-form{display:flex;flex-direction:column;gap:10px}
+.mat-form label{font-weight:600;font-size:15px;color:#10302D}
+.mat-row{display:flex;flex-wrap:wrap;gap:10px}
+.mat-row input{flex:1 1 220px;min-height:44px;padding:0 14px;border:1.5px solid #B9B29C;border-radius:10px;background:#FBFAF5;font:16px 'IBM Plex Sans',Arial,sans-serif;color:#1E2B29}
+.mat-row button{min-height:44px;padding:0 20px;border:0;border-radius:10px;background:#D9822B;color:#10302D;font:600 15px 'IBM Plex Sans',Arial,sans-serif;cursor:pointer}
+.mat-row button:disabled{opacity:.6;cursor:wait}
+.mat-hint{font-size:14px;color:#5E6E6A;margin:0}
+.mat-msg{min-height:20px;font-size:14.5px;color:#9A3B12;margin:0}
+.mat-list{display:flex;flex-direction:column;gap:12px}
+.mat-year{background:#FBFAF5;border:1px solid #D9D4C3;border-radius:12px}
+.mat-year summary{display:flex;align-items:center;gap:10px;min-height:52px;padding:0 16px;cursor:pointer;list-style:none;font-weight:600}
+.mat-year summary::-webkit-details-marker{display:none}
+.mat-year summary::after{content:'';margin-left:auto;width:8px;height:8px;border-right:2px solid #276B5E;border-bottom:2px solid #276B5E;transform:rotate(-45deg);transition:transform .15s}
+.mat-year[open] summary::after{transform:rotate(45deg)}
+.mat-y{font-size:17px;color:#10302D}
+.mat-n{font-size:13px;font-weight:500;color:#5E6E6A}
+.mat-year ul{list-style:none;margin:0;padding:4px 16px 14px 46px;display:flex;flex-direction:column;gap:10px;border-top:1px solid #D9D4C3;padding-top:12px}
+.mat-year li{display:flex;flex-direction:column;gap:2px}
+.mat-year li a{font-weight:600;font-size:15.5px;color:#276B5E}
+.mat-year li span{font-size:13.5px;color:#5E6E6A}
+.mat-empty{color:#5E6E6A}
+</style>
 </head>
 <body>
 <div style="font-family:'IBM Plex Sans', Arial, sans-serif;color:#1E2B29;background:#F4F1E8;width:100%;min-height:100vh">
@@ -227,34 +268,42 @@ h1,h2,h3,p,ul,ol{margin:0}
 <div style="display:flex;flex-direction:column;gap:12px;max-width:760px">
 <p style="font-size:14px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#A65A12">04 · Teaching</p>
 <h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:clamp(34px, 4.5vw, 52px);font-weight:600;line-height:1.1;color:#10302D">Courses &amp; teaching material</h2>
-<p style="font-size:19px;line-height:1.55;color:#3A4A47">Courses I teach in the PGDM programme at XIME. Open materials are linked where available.</p>
+<p style="font-size:19px;line-height:1.55;color:#3A4A47">Courses I teach in the PGDM programme at XIME. Course materials are password protected for enrolled students; ask your instructor for the password.</p>
 </div>
 
-<div id="teaching-root" style="display:flex;flex-direction:column;gap:40px">
-<!-- Featured: Applied Big Data Analytics -->
-<div style="background:#10302D;border-radius:20px;padding:40px;display:flex;flex-wrap:wrap;gap:40px;align-items:stretch">
-<div style="flex:999 1 460px;min-width:0;display:flex;flex-direction:column;gap:18px">
-<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-<span style="font-size:12px;font-weight:700;letter-spacing:2px;color:#10302D;background:#E9A04B;border-radius:6px;padding:5px 10px">NEW COURSE</span>
-<span style="font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#C9D8D2">PGDM · Analytics &amp; IT</span>
+<div id="teaching-root">
+<div class="course-grid">
+<div class="course-card" style="border-top-color:#2F7F6F">
+<div class="course-tags"><span class="course-badge">New course</span><span class="course-label">PGDM · Analytics &amp; IT</span></div>
+<h3>Applied Big Data Analytics</h3>
+<p>When data outgrows one machine: distributed storage and processing, the platforms built to cope, and how to judge whether a big-data investment pays off.</p>
+<button type="button" class="course-btn" data-course="abda" data-title="Applied Big Data Analytics"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Course materials</button>
 </div>
-<h3 style="font-family:'Source Serif 4', Georgia, serif;font-size:clamp(30px, 3.6vw, 42px);font-weight:500;line-height:1.1;color:#F4F1E8">Applied Big Data Analytics</h3>
-<p style="font-size:17.5px;line-height:1.6;color:#C9D8D2">When data outgrows one machine: distributed storage and processing, the platforms built to cope, and how to judge whether a big-data investment pays off. Every session runs a Prime, Demonstrate, Do, Decide loop built around real industry and consultancy cases.</p>
-<div><a href="teaching/" style="background:#D9822B;color:#10302D;text-decoration:none;font-weight:600;font-size:16px;padding:13px 22px;border-radius:10px;display:inline-flex;align-items:center">Session decks →</a></div>
+<div class="course-card" style="border-top-color:#D9822B">
+<h3>Artificial Intelligence &amp; Machine Learning</h3>
+<p>Supervised and unsupervised learning, model evaluation, deep learning foundations.</p>
+<button type="button" class="course-btn" data-course="aiml" data-title="Artificial Intelligence &amp; Machine Learning"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Course materials</button>
 </div>
-<ol style="flex:1 1 340px;min-width:0;list-style:none;padding:0;display:flex;flex-direction:column;gap:12px">
-<li style="display:flex;gap:16px;align-items:flex-start;border:1px solid #2F7F6F;border-radius:12px;padding:16px 18px"><span style="font-family:'Source Serif 4', Georgia, serif;font-size:26px;font-weight:600;color:#E9A04B;line-height:1">1</span><span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px;color:#F4F1E8">What is Big Data?</strong><span style="font-size:14.5px;line-height:1.45;color:#C9D8D2">Scale-out, the platform timeline, the 5 V's</span></span></li>
-<li style="display:flex;gap:16px;align-items:flex-start;border:1px solid #2F7F6F;border-radius:12px;padding:16px 18px"><span style="font-family:'Source Serif 4', Georgia, serif;font-size:26px;font-weight:600;color:#E9A04B;line-height:1">2</span><span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px;color:#F4F1E8">Structured, semi-structured, unstructured</strong><span style="font-size:14.5px;line-height:1.45;color:#C9D8D2">Data forms and how each is stored</span></span></li>
-<li style="display:flex;gap:16px;align-items:flex-start;border:1px solid #2F7F6F;border-radius:12px;padding:16px 18px"><span style="font-family:'Source Serif 4', Georgia, serif;font-size:26px;font-weight:600;color:#E9A04B;line-height:1">3</span><span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px;color:#F4F1E8">Risk and return of big data platforms</strong><span style="font-size:14.5px;line-height:1.45;color:#C9D8D2">Costs, benefits and platform choice</span></span></li>
-</ol>
+<div class="course-card" style="border-top-color:#2F7F6F">
+<h3>Business Analytics using Python</h3>
+<p>Pandas, visualisation, regression and classification on business data.</p>
+<button type="button" class="course-btn" data-course="bapy" data-title="Business Analytics using Python"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Course materials</button>
 </div>
-
-<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:20px">
-<div style="background:#FBFAF5;border:1px solid #D9D4C3;border-top:6px solid #2F7F6F;border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="font-family:'Source Serif 4', Georgia, serif;font-size:22px;font-weight:600;line-height:1.2;color:#10302D">Artificial Intelligence &amp; Machine Learning</h3><p style="font-size:15.5px;line-height:1.5;color:#3A4A47;flex:1">Supervised and unsupervised learning, model evaluation, deep learning foundations.</p><a href="teaching/" style="font-size:15px;font-weight:600;padding:6px 0">Materials →</a></div>
-<div style="background:#FBFAF5;border:1px solid #D9D4C3;border-top:6px solid #2F7F6F;border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="font-family:'Source Serif 4', Georgia, serif;font-size:22px;font-weight:600;line-height:1.2;color:#10302D">Business Analytics using Python</h3><p style="font-size:15.5px;line-height:1.5;color:#3A4A47;flex:1">Pandas, visualisation, regression and classification on business data.</p><a href="https://claude.ai/artifact/Au1djkh3sLarJxZXWq1Vf9" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;padding:6px 0">Materials →</a></div>
-<div style="background:#FBFAF5;border:1px solid #D9D4C3;border-top:6px solid #2F7F6F;border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="font-family:'Source Serif 4', Georgia, serif;font-size:22px;font-weight:600;line-height:1.2;color:#10302D">Database Management &amp; Data Warehousing</h3><p style="font-size:15.5px;line-height:1.5;color:#3A4A47;flex:1">Relational design, SQL, ETL and warehouse modelling.</p><a href="teaching/" style="font-size:15px;font-weight:600;padding:6px 0">Materials →</a></div>
-<div style="background:#FBFAF5;border:1px solid #D9D4C3;border-top:6px solid #D9822B;border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="font-family:'Source Serif 4', Georgia, serif;font-size:22px;font-weight:600;line-height:1.2;color:#10302D">Decision Models for Projects</h3><p style="font-size:15.5px;line-height:1.5;color:#3A4A47;flex:1">Linear programming, queueing, simulation and game theory.</p><a href="teaching/" style="font-size:15px;font-weight:600;padding:6px 0">Materials →</a></div>
-<div style="background:#FBFAF5;border:1px solid #D9D4C3;border-top:6px solid #D9822B;border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="font-family:'Source Serif 4', Georgia, serif;font-size:22px;font-weight:600;line-height:1.2;color:#10302D">IT Project Management</h3><p style="font-size:15.5px;line-height:1.5;color:#3A4A47;flex:1">Planning, estimation, agile delivery and risk.</p><a href="teaching/" style="font-size:15px;font-weight:600;padding:6px 0">Materials →</a></div>
+<div class="course-card" style="border-top-color:#D9822B">
+<h3>Database Management &amp; Data Warehousing</h3>
+<p>Relational design, SQL, ETL and warehouse modelling.</p>
+<button type="button" class="course-btn" data-course="dbms" data-title="Database Management &amp; Data Warehousing"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Course materials</button>
+</div>
+<div class="course-card" style="border-top-color:#2F7F6F">
+<h3>Decision Models for Projects</h3>
+<p>Linear programming, queueing, simulation and game theory.</p>
+<button type="button" class="course-btn" data-course="dmp" data-title="Decision Models for Projects"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Course materials</button>
+</div>
+<div class="course-card" style="border-top-color:#D9822B">
+<h3>IT Project Management</h3>
+<p>Planning, estimation, agile delivery and risk.</p>
+<button type="button" class="course-btn" data-course="itpm" data-title="IT Project Management"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Course materials</button>
+</div>
 </div>
 </div>
 </div>
@@ -331,35 +380,125 @@ h1,h2,h3,p,ul,ol{margin:0}
 </footer>
 
 </div>
+<dialog id="materials-dialog" class="mat-dialog" aria-labelledby="materials-title">
+<div class="mat-head"><div><p>Course materials</p><h2 id="materials-title">Course materials</h2></div><button type="button" id="materials-close" class="mat-close" aria-label="Close">&times;</button></div>
+<div class="mat-body">
+<form id="materials-form" class="mat-form">
+<label for="materials-pw">Password</label>
+<div class="mat-row"><input id="materials-pw" type="password" autocomplete="current-password" required><button type="submit">Open materials</button></div>
+<p class="mat-hint">For enrolled students. Your instructor shares the password in class.</p>
+<p id="materials-msg" class="mat-msg" aria-live="polite"></p>
+</form>
+<div id="materials-list" class="mat-list" hidden></div>
+</div>
+</dialog>
 <script>
 /* =====================================================================
    SITE CONTENT FROM GOOGLE SHEETS
    ---------------------------------------------------------------------
-   Courses, course materials, publications and news are read from your
-   Google Sheet. To change the site, edit the Sheet — not this file.
-
-   One-time setup (see the "How to use" tab in the Sheet):
-   1. In Google Sheets: File > Share > Publish to web > Entire document > Publish.
-   2. Copy the link it shows. Paste the long code between /d/e/ and /pub
-      into "key" below (it starts with 2PACX-).
-   3. For each tab, click the tab and copy the number after "gid=" in the
-      browser address bar into "tabs" below. The first tab is usually 0.
-   If "key" is empty or the Sheet can't be reached, the site simply shows
-   the content already written in this page.
+   PUBLIC Sheet  (published to web): Courses, Publications, News.
+   PRIVATE Sheet (NOT published):    Materials + Access (passwords),
+   served only through your Google Apps Script after a correct password.
+   Edit the Sheets, not this file.
    ===================================================================== */
 const SITE_DATA = {
-  key: '2PACX-1vRTmYERYFDsWlC9fhTcXfByWEJTGzYNfaepkBr8fLSr5VeXQ7grcA4yhujT_7Hdpw',                 // e.g. '2PACX-1vT...'
+  key: '2PACX-1vRTmYERYFDsWlC9fhTcXfByWEJTGzYNfaepkBr8fLSr5VeXQ7grcA4yhujT_7Hdpw',
   tabs: {
     courses: '720980426',           // gid of the "Courses" tab
-    materials: '1603194713',         // gid of the "Materials" tab
-    publications: '1854559941',      // gid of the "Publications" tab
-    news: '2126784019'               // gid of the "News" tab
-  }
+    publications: '1854559941',     // gid of the "Publications" tab
+    news: '2126784019'              // gid of the "News" tab
+  },
+  // Web app URL of the Apps Script attached to your PRIVATE materials Sheet
+  // (ends in /exec). Leave empty until you have deployed it.
+  materialsApi: 'https://script.google.com/macros/s/AKfycbyo6jTVvwx8nibqDV_HhXWG8qa8PPWYrqwzTSiSfFdhKYF2gI5ZNGpJJfhR3EhCJEAm/exec'
 };
 
 (function () {
-  if (!SITE_DATA.key) return;
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const md = s => esc(s).replace(/\*([^*]+)\*/g, '<em>$1</em>');   // *text* = italics
+  const safeUrl = u => {
+    u = String(u || '').trim();
+    if (/^https?:\/\//i.test(u) || /^mailto:/i.test(u)) return u;
+    if (u && !/^[a-z][a-z0-9+.-]*:/i.test(u)) return u;
+    return '';
+  };
+  const isShown = r => !/^(n|no|false|0|hide|hidden)$/i.test(String(r.show || '').trim());
+  const ext = u => /^https?:/i.test(u) ? ' target="_blank" rel="noopener"' : '';
 
+  /* ---------------- Course materials dialog ---------------- */
+  const dlg = document.getElementById('materials-dialog');
+  const form = document.getElementById('materials-form');
+  const pwInput = document.getElementById('materials-pw');
+  const msg = document.getElementById('materials-msg');
+  const out = document.getElementById('materials-list');
+  const titleEl = document.getElementById('materials-title');
+  const unlocked = {};          // course_id -> materials (kept for this page visit only)
+  let current = null;
+
+  function folderIcon() {
+    return '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A65A12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>';
+  }
+
+  function showMaterials(list) {
+    form.hidden = true;
+    const items = (list || [])
+      .map(m => ({ year: String(m.year || '').trim() || 'Other', name: m.name, note: m.note, url: safeUrl(m.url) }))
+      .filter(m => m.name && m.url);
+    if (!items.length) { out.innerHTML = '<p class="mat-empty">No materials have been added for this course yet.</p>'; out.hidden = false; return; }
+    const years = [...new Set(items.map(m => m.year))]
+      .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
+    out.innerHTML = years.map((y, i) => {
+      const rows = items.filter(m => m.year === y);
+      return `<details class="mat-year"${i === 0 ? ' open' : ''}>
+<summary>${folderIcon()}<span class="mat-y">${esc(y)}</span><span class="mat-n">${rows.length} item${rows.length > 1 ? 's' : ''}</span></summary>
+<ul>${rows.map(m => `<li><a href="${esc(m.url)}"${ext(m.url)}>${esc(m.name)}</a>${m.note ? `<span>${esc(m.note)}</span>` : ''}</li>`).join('')}</ul>
+</details>`;
+    }).join('');
+    out.hidden = false;
+  }
+
+  function openMaterials(courseId, title) {
+    current = courseId;
+    titleEl.textContent = title || 'Course materials';
+    msg.textContent = '';
+    out.hidden = true; out.innerHTML = '';
+    if (unlocked[courseId]) { showMaterials(unlocked[courseId]); }
+    else { form.hidden = false; pwInput.value = ''; }
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    if (!form.hidden) setTimeout(() => pwInput.focus(), 30);
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!SITE_DATA.materialsApi) { msg.textContent = 'Course materials are not available online yet.'; return; }
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; msg.textContent = 'Checking…';
+    try {
+      const res = await fetch(SITE_DATA.materialsApi, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ course: current, pw: pwInput.value })
+      });
+      const data = await res.json();
+      if (data.ok) { unlocked[current] = data.materials; msg.textContent = ''; showMaterials(data.materials); }
+      else if (data.error === 'locked') msg.textContent = 'Too many attempts. Please try again in 10 minutes.';
+      else msg.textContent = 'Incorrect password. Please check with your instructor.';
+    } catch (err) {
+      msg.textContent = 'Could not reach the materials server. Please try again shortly.';
+    }
+    btn.disabled = false;
+  });
+
+  document.getElementById('materials-close').addEventListener('click', () => dlg.close ? dlg.close() : dlg.removeAttribute('open'));
+  dlg.addEventListener('click', e => { if (e.target === dlg && dlg.close) dlg.close(); });
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-course]');
+    if (b) { e.preventDefault(); openMaterials(b.dataset.course, b.dataset.title); }
+  });
+
+  /* ---------------- Public Sheet loading ---------------- */
+  if (!SITE_DATA.key) return;
   const csvUrl = gid => 'https://docs.google.com/spreadsheets/d/e/' + SITE_DATA.key +
     '/pub?gid=' + encodeURIComponent(gid) + '&single=true&output=csv';
 
@@ -392,72 +531,26 @@ const SITE_DATA = {
     } catch (e) { return null; }
   }
 
-  const esc = s => String(s || '').replace(/[&<>"']/g, c =>
-    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const md = s => esc(s).replace(/\*([^*]+)\*/g, '<em>$1</em>');   // *text* = italics
-  const safeUrl = u => {
-    u = String(u || '').trim();
-    if (/^https?:\/\//i.test(u) || /^mailto:/i.test(u)) return u;
-    if (u && !/^[a-z][a-z0-9+.-]*:/i.test(u)) return u;          // relative link, e.g. teaching/notes.pdf
-    return '';
-  };
-  const yes = v => /^(y|yes|true|1)$/i.test(String(v || '').trim());
-  const isShown = r => !/^(n|no|false|0|hide|hidden)$/i.test(String(r.show || '').trim());
-  const ext = u => /^https?:/i.test(u) ? ' target="_blank" rel="noopener"' : '';
+  /* ---------- Teaching: one uniform card per course ---------- */
+  function courseCard(c, idx) {
+    const accent = idx % 2 ? '#D9822B' : '#2F7F6F';
+    return `
+<div class="course-card" style="border-top-color:${accent}">
+${(c.badge || c.label) ? `<div class="course-tags">${c.badge ? `<span class="course-badge">${esc(c.badge)}</span>` : ''}${c.label ? `<span class="course-label">${esc(c.label)}</span>` : ''}</div>` : ''}
+<h3>${esc(c.title)}</h3>
+<p>${md(c.description)}</p>
+<button type="button" class="course-btn" data-course="${esc((c.course_id || '').toLowerCase())}" data-title="${esc(c.title)}">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+Course materials</button>
+</div>`;
+  }
 
-  /* ---------- Teaching ---------- */
-  function renderTeaching(courses, materials) {
+  function renderTeaching(courses) {
     const root = document.getElementById('teaching-root');
     if (!root || !courses) return;
-    const byCourse = {};
-    (materials || []).filter(isShown).forEach(m => {
-      const id = (m.course_id || '').toLowerCase();
-      (byCourse[id] = byCourse[id] || []).push(m);
-    });
-    const list = courses.filter(isShown);
-    let featured = '', cards = '';
-
-    list.forEach((c, idx) => {
-      const mats = (byCourse[(c.course_id || '').toLowerCase()] || [])
-        .map(m => ({ name: m.name, note: m.note, url: safeUrl(m.url) }))
-        .filter(m => m.name && m.url);
-
-      if (yes(c.featured)) {
-        const items = mats.length ? mats.map((m, i) => `
-<li style="display:flex;gap:16px;align-items:flex-start;border:1px solid #2F7F6F;border-radius:12px;padding:16px 18px">
-<span style="font-family:'Source Serif 4', Georgia, serif;font-size:26px;font-weight:600;color:#E9A04B;line-height:1">${i + 1}</span>
-<span style="display:flex;flex-direction:column;gap:2px;min-width:0"><a href="${esc(m.url)}"${ext(m.url)} style="font-size:16px;font-weight:600;color:#F4F1E8">${esc(m.name)}</a>${m.note ? `<span style="font-size:14.5px;line-height:1.45;color:#C9D8D2">${esc(m.note)}</span>` : ''}</span>
-</li>`).join('') : `<li style="font-size:15px;color:#C9D8D2">Materials coming soon.</li>`;
-        featured += `
-<div style="background:#10302D;border-radius:20px;padding:40px;display:flex;flex-wrap:wrap;gap:40px;align-items:stretch">
-<div style="flex:999 1 460px;min-width:0;display:flex;flex-direction:column;gap:18px">
-<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-${c.badge ? `<span style="font-size:12px;font-weight:700;letter-spacing:2px;color:#10302D;background:#E9A04B;border-radius:6px;padding:5px 10px;text-transform:uppercase">${esc(c.badge)}</span>` : ''}
-${c.label ? `<span style="font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#C9D8D2">${esc(c.label)}</span>` : ''}
-</div>
-<h3 style="font-family:'Source Serif 4', Georgia, serif;font-size:clamp(30px, 3.6vw, 42px);font-weight:500;line-height:1.1;color:#F4F1E8">${esc(c.title)}</h3>
-<p style="font-size:17.5px;line-height:1.6;color:#C9D8D2">${md(c.description)}</p>
-</div>
-<ol style="flex:1 1 340px;min-width:0;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px">${items}</ol>
-</div>`;
-      } else {
-        const accent = idx % 2 ? '#D9822B' : '#2F7F6F';
-        const items = mats.length
-          ? `<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;border-top:1px solid #D9D4C3;padding-top:12px">${mats.map(m =>
-              `<li><a href="${esc(m.url)}"${ext(m.url)} style="font-size:15px;font-weight:600;display:inline-block;padding:3px 0">${esc(m.name)} →</a>${m.note ? `<div style="font-size:13.5px;color:#5E6E6A">${esc(m.note)}</div>` : ''}</li>`).join('')}</ul>`
-          : `<p style="font-size:14.5px;color:#5E6E6A;border-top:1px solid #D9D4C3;padding-top:12px">Materials coming soon.</p>`;
-        cards += `
-<div style="background:#FBFAF5;border:1px solid #D9D4C3;border-top:6px solid ${accent};border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:10px">
-${c.badge ? `<span style="align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:2px;color:#10302D;background:#E9A04B;border-radius:6px;padding:4px 8px;text-transform:uppercase">${esc(c.badge)}</span>` : ''}
-<h3 style="font-family:'Source Serif 4', Georgia, serif;font-size:22px;font-weight:600;line-height:1.2;color:#10302D">${esc(c.title)}</h3>
-<p style="font-size:15.5px;line-height:1.5;color:#3A4A47;flex:1">${md(c.description)}</p>
-${items}
-</div>`;
-      }
-    });
-
-    root.innerHTML = featured +
-      (cards ? `<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:20px">${cards}</div>` : '');
+    const list = courses.filter(isShown).filter(c => c.title && c.course_id);
+    if (!list.length) return;
+    root.innerHTML = `<div class="course-grid">${list.map(courseCard).join('')}</div>`;
   }
 
   /* ---------- Publications ---------- */
@@ -517,9 +610,9 @@ ${items}
   }
 
   const t = SITE_DATA.tabs;
-  Promise.all([load(t.courses), load(t.materials), load(t.publications), load(t.news)])
-    .then(([courses, materials, pubs, news]) => {
-      renderTeaching(courses, materials);
+  Promise.all([load(t.courses), load(t.publications), load(t.news)])
+    .then(([courses, pubs, news]) => {
+      renderTeaching(courses);
       renderPublications(pubs);
       renderNews(news);
     });
