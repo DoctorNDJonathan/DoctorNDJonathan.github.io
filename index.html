@@ -97,7 +97,7 @@ html{scroll-behavior:smooth}
 </div>
 </div>
 <div style="flex:1 1 300px;display:flex;justify-content:center">
-<svg role="img" aria-label="Grid of data blocks in teal and amber, the site's signature motif" viewBox="0 0 376 376" style="width:100%;max-width:340px;height:auto">
+<svg id="nj-grid" role="img" aria-label="Grid of data blocks in teal and amber, the site's signature motif" viewBox="0 0 376 376" style="width:100%;max-width:340px;height:auto">
 <rect x="0" y="0" width="64" height="64" rx="8" fill="#2F7F6F" opacity="0.35"/><rect x="78" y="0" width="64" height="64" rx="8" fill="#2F7F6F" opacity="0.5"/><rect x="156" y="0" width="64" height="64" rx="8" fill="#2F7F6F" opacity="0.65"/><rect x="234" y="0" width="64" height="64" rx="8" fill="#2F7F6F" opacity="0.8"/><rect x="312" y="0" width="64" height="64" rx="8" fill="#D9822B" opacity="0.9"/>
 <rect x="0" y="78" width="64" height="64" rx="8" fill="#2F7F6F" opacity="0.5"/><rect x="78" y="78" width="142" height="142" rx="12" fill="#F4F1E8"/><text x="149" y="168" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-size="60" font-weight="600" fill="#10302D">NJ</text><rect x="234" y="78" width="64" height="64" rx="8" fill="#D9822B" opacity="0.9"/><rect x="312" y="78" width="64" height="64" rx="8" fill="#2F7F6F" opacity="0.8"/>
 <rect x="0" y="156" width="64" height="64" rx="8" fill="#2F7F6F" opacity="0.65"/><rect x="234" y="156" width="64" height="64" rx="8" fill="#2F7F6F" opacity="0.8"/><rect x="312" y="156" width="64" height="64" rx="8" fill="#2F7F6F" opacity="0.65"/>
@@ -616,6 +616,40 @@ Course materials</button>
       renderPublications(pubs);
       renderNews(news);
     });
+})();
+</script>
+<!-- NJ GRID ANIMATION: XOR-driven colour drift on the hero tiles. Delete this block to switch it off. -->
+<style>
+#nj-grid rect[width="64"]{transition:fill .8s cubic-bezier(.4,0,.2,1),opacity .9s cubic-bezier(.4,0,.2,1)}
+#nj-grid rect[width="64"]:hover{fill:#D9822B!important;opacity:1!important;transition-duration:.25s}
+@media (prefers-reduced-motion:reduce){#nj-grid rect{transition:none!important}}
+</style>
+<script>
+(function () {
+  var svg = document.getElementById('nj-grid');
+  if (!svg) return;
+  var TEAL = '#2F7F6F', AMBER = '#D9822B';
+  var LEVELS = [0.35, 0.5, 0.65, 0.8, 0.8];   // teal shades, faint to strong
+  var STEP_MS = 1800;                          // time between pattern shifts
+  var tiles = [].slice.call(svg.querySelectorAll('rect[width="64"]')).map(function (el) {
+    var c = Math.round(el.getAttribute('x') / 78), r = Math.round(el.getAttribute('y') / 78);
+    el.style.transitionDelay = ((r ^ c) * 70) + 'ms';   // wave sweeps across by XOR value
+    return { el: el, r: r, c: c };
+  });
+  var step = 0, timer = 0;
+  function paint() {
+    tiles.forEach(function (t) {
+      var amber = ((t.r ^ t.c) + step) % 8 === 0;       // about 1 tile in 8 turns amber
+      var band = Math.abs(((t.r + t.c + step) % 8) - 4); // smooth light/dark band, 0..4
+      t.el.style.fill = amber ? AMBER : TEAL;
+      t.el.style.opacity = amber ? 0.9 : LEVELS[4 - band];
+    });
+  }
+  function start() { if (!timer) timer = setInterval(function () { step = (step + 1) % 8; paint(); }, STEP_MS); }
+  function stop() { clearInterval(timer); timer = 0; }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // keep the original still design
+  new IntersectionObserver(function (e) { e[0].isIntersecting ? start() : stop(); }).observe(svg);
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
 })();
 </script>
 </body>
